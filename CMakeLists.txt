@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project name to your project name, my project isn't very descriptive
-project(myproject CXX)
+project(myproject VERSION 0.1.0 LANGUAGES C CXX)
+string(TOUPPER "${CMAKE_PROJECT_NAME}" CMAKE_PROJECT_NAME_UPPERCASE)
 include(cmake/StandardProjectSettings.cmake)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
@@ -26,8 +27,9 @@ enable_doxygen()
 # allow for static analysis options
 include(cmake/StaticAnalyzers.cmake)
 
-option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
-option(ENABLE_TESTING "Enable Test Builds" ON)
+include(cmake/UseGoldLinker.cmake)
+
+include(cmake/Options.cmake)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
@@ -45,26 +47,30 @@ endif()
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
 
-if(CPP_STARTER_USE_IMGUI)
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
-                           imgui-sfml/2.1@bincrafters/stable)
-
-  # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sfml:shared=False
-  # sfml:graphics=True sfml:audio=False sfml:window=True
-  # libalsa:disable_python=True)
-endif()
-
-if(CPP_STARTER_USE_SDL)
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
-                           sdl2/2.0.10@bincrafters/stable)
-  # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sdl2:wayland=True)
-endif()
-
-
 include(cmake/Conan.cmake)
 run_conan()
 
-if(ENABLE_TESTING)
+include(cmake/FetchContentDependencies.cmake)
+
+add_subdirectory(thirdparty)
+
+
+##################################
+# Project
+##################################
+
+option(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_TESTS "Enable ${CMAKE_PROJECT_NAME} Tests")
+option(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_FUZZING "Enable ${CMAKE_PROJECT_NAME} Fuzz Tests")
+option(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_BENCHMARKS "Enable ${CMAKE_PROJECT_NAME} Benchmark")
+
+## add configure files
+configure_file (
+    "${PROJECT_SOURCE_DIR}/include/Version.h.in"
+    "${PROJECT_BINARY_DIR}/include/Version.h"
+)
+
+
+if(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_TESTS)
   enable_testing()
   message(
     "Building Tests. Be sure to check out test/constexpr_tests for constexpr testing"
@@ -72,12 +78,18 @@ if(ENABLE_TESTING)
   add_subdirectory(test)
 endif()
 
-if(ENABLE_FUZZING)
+if(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_FUZZING)
   message(
     "Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html"
   )
   add_subdirectory(fuzz_test)
 endif()
 
+if(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_BENCHMARKS)
+  message(
+    "Building Benchmarks"
+  )
+  add_subdirectory(benchmark)
+endif()
 
 add_subdirectory(src)
