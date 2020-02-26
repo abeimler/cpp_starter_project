@@ -19,7 +19,7 @@ script:
   - ls /usr/bin/gcc*
   - ls /usr/bin/g++*
   - g++-9 --version
-  - CXX=/usr/bin/g++-9 CC=/usr/bin/gcc-9 cmake -DENABLE_COVERAGE:BOOL=1 -DBUILD_TESTS:BOOL=1 -DBUILD_FUZZING:BOOL=0 -DBUILD_INTEGRATION_TESTS:BOOL=0 . 
+  - CXX=/usr/bin/g++-9 CC=/usr/bin/gcc-9 cmake -DENABLE_COVERAGE:BOOL=1 . 
   - cmake --build . -- -j2 
   - ctest -j2
   - bash <(curl -s https://codecov.io/bash) -x /usr/bin/gcov-9

@@ -14,12 +14,12 @@ _change your travis and Co. links here_
 ```
  .
  +-- _benchmarks                    benchmarks and benchmark-main
- |  +-- _**benchmarks**             Sourcecode for benchmarks
+ |  +-- _benchmarks                 Sourcecode for benchmarks
  +-- _src                           Sourcecode
      +-- _app                       Application code
      |   +-- _engine                Sourcecode of app-core functionality (UI and GameRender-Engine and such)
      |   +-- _fltk, gtkmm, qt ...   Window Applications
-     +-- _**core**                  Sourcecode of core functionality (GameLogic and such)
+     +-- _core                      Sourcecode of core functionality (GameLogic and such)
      +-- _test                      Test code and test-main
      |   +-- constexpr_test         constexpr Unittests
      |   +-- integrartion_tests     Tests for integration tests (test for UI and may not possible on CI)
@@ -35,7 +35,7 @@ _change your travis and Co. links here_
  - cogapp   
    - `pip install --user cogapp`
 
-We need cogsapp to generate Sourcefile-lists in CMakeLists.txt-files, _see ./configure.sh_
+We need cogapp to generate Sourcefile-lists in CMakeLists.txt-files, _see ./configure.sh_
 
 ### configure
 
