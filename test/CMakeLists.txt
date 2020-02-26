@@ -10,3 +10,10 @@ target_link_libraries(catch_main PUBLIC CONAN_PKG::catch2)
 
 add_subdirectory(constexpr_tests)
 add_subdirectory(tests)
+
+if(BUILD_INTEGRATION_TESTS)
+  message(
+    "Building Integration Tests. Be sure to check out test/integration_tests for integration testing"
+  )
+  add_subdirectory(integrartion_tests)
+endif()

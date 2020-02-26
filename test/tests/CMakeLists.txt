@@ -62,7 +62,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME}-test ${CMAKE_PROJECT_NAME}::bitsery)
 target_link_libraries(${CMAKE_PROJECT_NAME}-test Bitsery::bitsery)
 target_link_libraries(${CMAKE_PROJECT_NAME}-test ${CMAKE_PROJECT_NAME}::json)
 target_link_libraries(${CMAKE_PROJECT_NAME}-test nlohmann_json::nlohmann_json)
-target_link_libraries(${CMAKE_PROJECT_NAME}-test ${CMAKE_PROJECT_NAME}::engine)
 
 target_compile_definitions(${CMAKE_PROJECT_NAME}-test PUBLIC -DTESTING)
 

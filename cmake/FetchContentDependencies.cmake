@@ -26,12 +26,14 @@ FetchContent_Declare(
 if(NOT units_POPULATED)
   FetchContent_Populate(units)
 
-  set(DISABLE_IOSTREAM                  ON CACHE BOOL "" FORCE)
-  set(DISABLE_PREDEFINED_UNITS          ON CACHE BOOL "" FORCE)
+  #if (NOT BUILD_TESTS) # optimizaions, units needed for tests
+  #  set(DISABLE_IOSTREAM                  ON CACHE BOOL "" FORCE)
+  #  set(DISABLE_PREDEFINED_UNITS          ON CACHE BOOL "" FORCE)
 
-  set(ENABLE_PREDEFINED_LENGTH_UNITS    ON CACHE BOOL "" FORCE)
-  set(ENABLE_PREDEFINED_MASS_UNITS      ON CACHE BOOL "" FORCE)
-  set(ENABLE_PREDEFINED_TIME_UNITS      ON CACHE BOOL "" FORCE)
+  #  set(ENABLE_PREDEFINED_LENGTH_UNITS    ON CACHE BOOL "" FORCE)
+  #  set(ENABLE_PREDEFINED_MASS_UNITS      ON CACHE BOOL "" FORCE)
+  #  set(ENABLE_PREDEFINED_TIME_UNITS      ON CACHE BOOL "" FORCE)
+  #endif()
 
   add_subdirectory(${units_SOURCE_DIR} ${units_BINARY_DIR})
 endif()
@@ -48,7 +50,7 @@ if(NOT benchpress_POPULATED)
 endif()
 
 ## for gamedev
-if(${CMAKE_PROJECT_NAME_UPPERCASE}_USE_RAYLIB) ###< use raylib ... (or some other dependencies)
+if(USE_LIB_RAYLIB) ###< use raylib ... (or some other dependencies)
   include(cmake/Raylib.cmake) ###< FetchContent and more
 endif()
 

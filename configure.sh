@@ -16,6 +16,7 @@ python3 -m cogapp -r ./src/persistence/bitsery/CMakeLists.txt
 python3 -m cogapp -r ./src/persistence/json/CMakeLists.txt
 python3 -m cogapp -r ./test/tests/CMakeLists.txt
 python3 -m cogapp -r ./test/constexpr_tests/CMakeLists.txt
+python3 -m cogapp -r ./test/integrartion_tests/CMakeLists.txt
 
 # you cmake as usual
-cmake . -Bbuild -DBUILD_SHARED_LIBS:BOOL="0" -DBUILD_TESTING:BOOL="0" -DBUILD_TESTS:BOOL="0" -DSTATIC:BOOL="1" -DSHARED:BOOL="0" ..
+cmake . -Bbuild ..

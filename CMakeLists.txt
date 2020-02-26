@@ -26,10 +26,7 @@ enable_doxygen()
 
 # allow for static analysis options
 include(cmake/StaticAnalyzers.cmake)
-
 include(cmake/UseGoldLinker.cmake)
-
-include(cmake/Options.cmake)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
@@ -41,6 +38,8 @@ if (ENABLE_PCH)
   target_precompile_headers(project_options INTERFACE <vector> <string> <map> <utility>)
 endif()
 
+# user options
+include(cmake/Options.cmake)
 
 # Set up some extra Conan dependencies based on our needs
 # before loading Conan
@@ -50,18 +49,14 @@ set(CONAN_EXTRA_OPTIONS "")
 include(cmake/Conan.cmake)
 run_conan()
 
+# more dependencies
 include(cmake/FetchContentDependencies.cmake)
-
 add_subdirectory(thirdparty)
 
 
 ##################################
 # Project
 ##################################
-
-option(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_TESTS "Enable ${CMAKE_PROJECT_NAME} Tests")
-option(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_FUZZING "Enable ${CMAKE_PROJECT_NAME} Fuzz Tests")
-option(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_BENCHMARKS "Enable ${CMAKE_PROJECT_NAME} Benchmark")
 
 ## add configure files
 configure_file (
@@ -70,22 +65,22 @@ configure_file (
 )
 
 
-if(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_TESTS)
+if(BUILD_TESTS)
   enable_testing()
   message(
-    "Building Tests. Be sure to check out test/constexpr_tests for constexpr testing"
+    "Building Tests. Be sure to check out test/tests and test/constexpr_tests for constexpr testing"
   )
   add_subdirectory(test)
 endif()
 
-if(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_FUZZING)
+if(BUILD_FUZZING)
   message(
     "Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html"
   )
   add_subdirectory(fuzz_test)
 endif()
 
-if(${CMAKE_PROJECT_NAME_UPPERCASE}_BUILD_BENCHMARKS)
+if(BUILD_BENCHMARKS)
   message(
     "Building Benchmarks"
   )

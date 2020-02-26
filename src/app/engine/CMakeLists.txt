@@ -68,22 +68,23 @@ target_link_libraries(${CMAKE_PROJECT_NAME}engine PUBLIC ${CMAKE_PROJECT_NAME}::
 target_link_libraries(${CMAKE_PROJECT_NAME}engine PUBLIC Bitsery::bitsery)
 target_link_libraries(${CMAKE_PROJECT_NAME}engine PUBLIC ${CMAKE_PROJECT_NAME}::bitsery)
 
-#
+##
 # setup/add more libs
-#
-if(${CMAKE_PROJECT_NAME_UPPERCASE}_USE_RAYLIB)
+##
+if(USE_LIB_RAYLIB)
   # not needed, meybe forlater
   target_compile_definitions(${CMAKE_PROJECT_NAME}engine PUBLIC -DUSE_RAYLIB)
 
   # add lib
   target_link_libraries(${CMAKE_PROJECT_NAME}engine PUBLIC raylib)
 endif()
+# add more libs or alternatives for raylib, rayfork, etc.
 
-if(${CMAKE_PROJECT_NAME_UPPERCASE}_ENABLE_LOGGING)
+if(ENABLE_LOGGING)
   target_compile_definitions(${CMAKE_PROJECT_NAME}engine PUBLIC -DENABLE_LOGGING)
 
   # add spdlog for logging
-  if(${CMAKE_PROJECT_NAME_UPPERCASE}_USE_SPDLOG_LOGGING)
+  if(USE_SPDLOG_LOGGING)
     target_compile_definitions(${CMAKE_PROJECT_NAME}engine PUBLIC -DUSE_SPDLOG_LOGGING)
     target_link_libraries(${CMAKE_PROJECT_NAME}engine PUBLIC CONAN_PKG::spdlog CONAN_PKG::fmt)
   endif()

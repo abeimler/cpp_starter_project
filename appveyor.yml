@@ -9,7 +9,7 @@ image:
                       
       pip install --user cogapp conan
       set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
-      cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release
+      cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release -DBUILD_DESKTOP_APP:BOOL=0 -DBUILD_TESTS:BOOL=1
       cmake --build . --config "Release" | python annotate.py --tee --name "MSVC Log" --tool msvc
   test_script:
   - cmd: ctest -C Release
