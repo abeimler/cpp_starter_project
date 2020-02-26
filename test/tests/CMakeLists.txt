@@ -58,16 +58,6 @@ target_include_directories(${CMAKE_PROJECT_NAME}-test PRIVATE ${PROJECT_BINARY_D
 
 # TODO: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME}-test ${CMAKE_PROJECT_NAME}::core)
-target_link_libraries(${CMAKE_PROJECT_NAME}-test ${CMAKE_PROJECT_NAME}::bitsery)
-target_link_libraries(${CMAKE_PROJECT_NAME}-test Bitsery::bitsery)
-target_link_libraries(${CMAKE_PROJECT_NAME}-test ${CMAKE_PROJECT_NAME}::json)
-target_link_libraries(${CMAKE_PROJECT_NAME}-test nlohmann_json::nlohmann_json)
-
-target_compile_definitions(${CMAKE_PROJECT_NAME}-test PUBLIC -DTESTING)
-
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-find_package(Threads REQUIRED)
-target_link_libraries(${CMAKE_PROJECT_NAME}-test Threads::Threads)
 
 # automatically discover tests that are defined in catch based test files you can modify the unittests. TEST_PREFIX to
 # whatever you want, or use different for different binaries

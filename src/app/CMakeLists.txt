@@ -1,18 +1,38 @@
-if(BUILD_RASPBERRY_APP OR BUILD_DESKTOP_APP)
-  add_subdirectory(engine)
-
-  if(BUILD_RASPBERRY_APP)
-    # TODO: needs more work and testing
-    include(../../cmake/RaspberryPi.cmake)
-
-    if(BUILD_ON_RASPBERRY_PI)
-      add_subdirectory(raspberrypi)
-    elseif(UNIX)
-      add_subdirectory(raspberrypi)
-    endif()
-  endif()
-
-  if(BUILD_DESKTOP_APP)
-    add_subdirectory(desktop)
-  endif()
+# sdl
+if(CPP_STARTER_USE_SDL)
+  message("Using SDL2")
+  add_subdirectory(sdl)
 endif()
+
+# qt
+if(CPP_STARTER_USE_QT)
+  message("Using Qt")
+  add_subdirectory(qt)
+endif()
+
+# fltk test
+if(CPP_STARTER_USE_FLTK)
+  message("Using FLTK")
+  add_subdirectory(fltk)
+endif()
+
+# gtkmm test
+if(CPP_STARTER_USE_GTKMM)
+  message("Using gtkmm")
+  add_subdirectory(gtkmm)
+endif()
+
+# imgui example
+if(CPP_STARTER_USE_IMGUI)
+  message("Using Dear ImGui")
+  add_subdirectory(imgui)
+endif()
+
+# Nana
+if(CPP_STARTER_USE_NANA)
+  message("Using Nana")
+  add_subdirectory(nana)
+endif()
+
+add_subdirectory(intro)
+add_subdirectory(engine)

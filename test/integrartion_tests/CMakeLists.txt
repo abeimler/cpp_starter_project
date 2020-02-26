@@ -34,7 +34,7 @@ set(${CMAKE_PROJECT_NAME}_INTEGRATION_TEST_SOURCE "")
 #       cog.outl(")")
 # ]]]
 ## GENERATED CODE WITH cogapp
-list(APPEND ${CMAKE_PROJECT_NAME}_TEST_SOURCE 
+list(APPEND ${CMAKE_PROJECT_NAME}_INTEGRATION_TEST_SOURCE 
     ${CMAKE_CURRENT_SOURCE_DIR}/tests.cpp 
 )
 # [[[end]]]
@@ -57,17 +57,7 @@ target_include_directories(${CMAKE_PROJECT_NAME}-integration-test PRIVATE ${CMAK
 target_include_directories(${CMAKE_PROJECT_NAME}-integration-test PRIVATE ${PROJECT_BINARY_DIR}/include)
 
 # TODO: add libs
-target_link_libraries(${CMAKE_PROJECT_NAME}-integration-test ${CMAKE_PROJECT_NAME}::bitsery)
-target_link_libraries(${CMAKE_PROJECT_NAME}-integration-test Bitsery::bitsery)
-target_link_libraries(${CMAKE_PROJECT_NAME}-integration-test ${CMAKE_PROJECT_NAME}::json)
-target_link_libraries(${CMAKE_PROJECT_NAME}-integration-test nlohmann_json::nlohmann_json)
 target_link_libraries(${CMAKE_PROJECT_NAME}-integration-test ${CMAKE_PROJECT_NAME}::engine)
-
-target_compile_definitions(${CMAKE_PROJECT_NAME}-integration-test PUBLIC -DINTEGRATION_TESTING)
-
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-find_package(Threads REQUIRED)
-target_link_libraries(${CMAKE_PROJECT_NAME}-integration-test Threads::Threads)
 
 # automatically discover tests that are defined in catch based test files you can modify the unittests. TEST_PREFIX to
 # whatever you want, or use different for different binaries

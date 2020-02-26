@@ -55,19 +55,8 @@ target_sources(${CMAKE_PROJECT_NAME}-benchmark PRIVATE ${${CMAKE_PROJECT_NAME}_B
                                                        ${${CMAKE_PROJECT_NAME}_BENCHMARK_HEADERS})
 target_include_directories(${CMAKE_PROJECT_NAME}-benchmark PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_include_directories(${CMAKE_PROJECT_NAME}-benchmark PUBLIC ${PROJECT_SOURCE_DIR}/app)
-target_include_directories(${CMAKE_PROJECT_NAME}-benchmark PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_include_directories(${CMAKE_PROJECT_NAME}-benchmark PUBLIC ${PROJECT_SOURCE_DIR}/src/persistence)
-target_include_directories(${CMAKE_PROJECT_NAME}-benchmark PUBLIC ${PROJECT_SOURCE_DIR}/include)
-target_include_directories(${CMAKE_PROJECT_NAME}-benchmark PRIVATE ${PROJECT_BINARY_DIR}/include)
-
 # todo: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME}-benchmark ${CMAKE_PROJECT_NAME}::core)
-target_link_libraries(${CMAKE_PROJECT_NAME}-benchmark ${CMAKE_PROJECT_NAME}::bitsery)
-target_link_libraries(${CMAKE_PROJECT_NAME}-benchmark Bitsery::bitsery)
-target_link_libraries(${CMAKE_PROJECT_NAME}-benchmark ${CMAKE_PROJECT_NAME}::json)
-target_link_libraries(${CMAKE_PROJECT_NAME}-benchmark nlohmann_json::nlohmann_json)
-target_link_libraries(${CMAKE_PROJECT_NAME}-benchmark ${CMAKE_PROJECT_NAME}::engine)
 
 target_compile_definitions(${CMAKE_PROJECT_NAME}-benchmark PUBLIC -DBENCHMARKING)
 

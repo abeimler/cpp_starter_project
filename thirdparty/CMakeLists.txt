@@ -1,2 +1,1 @@
-add_subdirectory(bitsery)
-add_subdirectory(json)
+# add subdirectories here

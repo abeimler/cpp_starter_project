@@ -3,7 +3,7 @@
 ##
 
 ## build options
-option(BUILD_TESTS "Enable Tests" OFF)
+option(BUILD_TESTS "Enable Tests" ON)
 option(BUILD_INTEGRATION_TESTS "Enable Integration Tests" OFF)
 option(BUILD_FUZZING "Enable Fuzz Tests" OFF)
 option(BUILD_BENCHMARKS "Enable Benchmark" OFF)
@@ -24,9 +24,11 @@ endif()
 # add more alternatives for logging
 
 ## build platform XY options
-option(BUILD_RASPBERRY_APP "Build ${CMAKE_PROJECT_NAME} RaspberryPi App" OFF)
-option(BUILD_DESKTOP_APP "Build ${CMAKE_PROJECT_NAME} Desktop App" ON)
-
 ## use lib XYZ options
-option(USE_LIB_RAYLIB "Use raylib Library" ON) # for gamedev
+option(CPP_STARTER_USE_QT "Enable compilation of QT sample" OFF)
+option(CPP_STARTER_USE_FLTK "Enable compilation of FLTK sample" OFF)
+option(CPP_STARTER_USE_GTKMM "Enable compilation of GTKMM sample" OFF)
+option(CPP_STARTER_USE_IMGUI "Enable compilation of ImGui sample" OFF)
+option(CPP_STARTER_USE_NANA "Enable compilation of Nana GUI sample" OFF)
+option(CPP_STARTER_USE_SDL "Enable compilation of SDL sample" OFF)
 # add more enable/disable features
