@@ -61,9 +61,9 @@ target_sources(${CMAKE_PROJECT_NAME}engine PRIVATE ${APP_ENGINE_${CMAKE_PROJECT_
 # TODO: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME}engine PUBLIC ${CMAKE_PROJECT_NAME}::core)
 
-##
+#
 # setup/add more libs
-##
+#
 if(ENABLE_LOGGING)
   target_compile_definitions(${CMAKE_PROJECT_NAME}engine PUBLIC -DENABLE_LOGGING)
 

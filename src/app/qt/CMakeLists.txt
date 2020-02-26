@@ -56,6 +56,6 @@ add_executable(helloQt)
 target_link_libraries(helloQt PRIVATE project_warnings project_options)
 target_sources(helloQt PRIVATE ${APP_QT_SOURCE} ${APP_QT_HEADERS})
 
-#set_target_properties(helloQt PROPERTIES CMAKE_AUTOMOC ON)
+# set_target_properties(helloQt PROPERTIES CMAKE_AUTOMOC ON)
 target_link_libraries(helloQt PRIVATE Qt5::Widgets)
 target_compile_features(helloQt PUBLIC cxx_nullptr cxx_lambdas)

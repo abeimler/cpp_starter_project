@@ -52,7 +52,7 @@ source_group(
 add_executable(${CMAKE_PROJECT_NAME}-integration-test)
 target_link_libraries(${CMAKE_PROJECT_NAME}-integration-test project_warnings project_options catch_main)
 target_sources(${CMAKE_PROJECT_NAME}-integration-test PRIVATE ${${CMAKE_PROJECT_NAME}_INTEGRATION_TEST_SOURCE}
-                                                  ${${CMAKE_PROJECT_NAME}_INTEGRATION_TEST_HEADERS})
+                                                              ${${CMAKE_PROJECT_NAME}_INTEGRATION_TEST_HEADERS})
 target_include_directories(${CMAKE_PROJECT_NAME}-integration-test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(${CMAKE_PROJECT_NAME}-integration-test PRIVATE ${PROJECT_BINARY_DIR}/include)
 
