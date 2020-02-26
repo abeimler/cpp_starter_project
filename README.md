@@ -13,18 +13,18 @@ _change your travis and Co. links here_
 
 ```
  .
- +-- _benchmarks                        benchmarks and benchmark-main
- |  +-- _**benchmarks**                 Sourcecode for benchmarks
- +-- _src                               Sourcecode
-     +-- _app                           Application code
-     |   +-- _**engine**                Sourcecode of app-core functionality (UI and GameRender-Engine and such)
-     |   +-- _**fltk, gtkmm, qt ...**   Window Applications
-     +-- _**core**                      Sourcecode of core functionality (GameLogic and such)
-     +-- _test                          Test code and test-main
-     |   +-- **constexpr_test**         constexpr Unittests
-     |   +-- **integrartion_tests**     Tests for integration tests (test for UI and may not possible on CI)
-     |   +-- **tests**                  Unittests (tests for core functionality)
-     +-- _thirdparty                    custom changed libraries or libs not on the Internet (github, conan, ...)
+ +-- _benchmarks                    benchmarks and benchmark-main
+ |  +-- _**benchmarks**             Sourcecode for benchmarks
+ +-- _src                           Sourcecode
+     +-- _app                       Application code
+     |   +-- _engine                Sourcecode of app-core functionality (UI and GameRender-Engine and such)
+     |   +-- _fltk, gtkmm, qt ...   Window Applications
+     +-- _**core**                  Sourcecode of core functionality (GameLogic and such)
+     +-- _test                      Test code and test-main
+     |   +-- constexpr_test         constexpr Unittests
+     |   +-- integrartion_tests     Tests for integration tests (test for UI and may not possible on CI)
+     |   +-- tests                  Unittests (tests for core functionality)
+     +-- _thirdparty                custom changed libraries or libs not on the Internet (github, conan, ...)
 ```
 
 ## Build

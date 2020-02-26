@@ -1,24 +1,29 @@
 image:
-    - Visual Studio 2019
-  clone_folder: c:\projects\source
-  build_script:
-  - cmd: >-
-      mkdir build
-      cd build
-      curl -s https://report.ci/annotate.py > annotate.py
-                      
-      pip install --user cogapp conan
-      set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
-      cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release -DBUILD_TESTS:BOOL=1 -DBUILD_FUZZING:BOOL=0 -DBUILD_INTEGRATION_TESTS:BOOL=0
-      cmake --build . --config "Release" | python annotate.py --tee --name "MSVC Log" --tool msvc
-  test_script:
-  - cmd: ctest -C Release
-  
-  
-  on_failure:
-    - curl -s https://report.ci/annotate.py | python - --tool msvc --input build.log
-  
-  on_finish:
-    # Framework with autodetection
-    - curl -s https://report.ci/upload.py | python
-  
+  - Visual Studio 2019
+clone_folder: c:\projects\source
+build_script:
+- cmd: >-
+    mkdir build
+
+    cd build
+
+    curl -s https://report.ci/annotate.py > annotate.py
+                    
+    pip install --user conan
+
+    set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
+
+    cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release
+
+    cmake --build . --config "Release" | python annotate.py --tee --name "MSVC Log" --tool msvc
+test_script:
+- cmd: ctest -C Release
+
+
+on_failure:
+  - curl -s https://report.ci/annotate.py | python - --tool msvc --input build.log
+
+on_finish:
+  # Framework with autodetection
+  - curl -s https://report.ci/upload.py | python
+
