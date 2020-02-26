@@ -62,7 +62,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME}-constexpr-tests ${CMAKE_PROJECT_NAME
 target_link_libraries(${CMAKE_PROJECT_NAME}-constexpr-tests Bitsery::bitsery)
 target_link_libraries(${CMAKE_PROJECT_NAME}-constexpr-tests ${CMAKE_PROJECT_NAME}::json)
 target_link_libraries(${CMAKE_PROJECT_NAME}-constexpr-tests nlohmann_json::nlohmann_json)
-target_link_libraries(${CMAKE_PROJECT_NAME}-constexpr-tests ${CMAKE_PROJECT_NAME}::engine)
 
 target_compile_definitions(${CMAKE_PROJECT_NAME}-constexpr-tests PUBLIC -DCONSTEXPR_TESTING)
 
