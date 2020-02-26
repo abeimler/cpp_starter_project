@@ -64,4 +64,3 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${PROJECT_BINARY_DIR}/i
 # @TODO: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC CONAN_PKG::date)
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC CONAN_PKG::magic_enum)
-target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC units)
