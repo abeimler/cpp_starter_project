@@ -9,9 +9,6 @@ ExternalProject_Add(
 # ExternalProject_Get_Property(Nana NANA_INCLUDE_DIR)
 ExternalProject_Get_Property(Nana SOURCE_DIR BINARY_DIR)
 
-set(APP_NANA_HEADERS "")
-set(APP_NANA_SOURCE "")
-
 # cmake-format: off
 # [[[cog
 #    import os, cog, glob
@@ -20,7 +17,7 @@ set(APP_NANA_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND APP_NANA_HEADERS ")
+#       cog.outl("set(APP_NANA_HEADERS ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
@@ -37,14 +34,14 @@ set(APP_NANA_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND APP_NANA_SOURCE ")
+#       cog.outl("set(APP_NANA_SOURCE ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
 #       cog.outl(")")
 # ]]]
 ## GENERATED CODE WITH cogapp
-list(APPEND APP_NANA_SOURCE 
+set(APP_NANA_SOURCE 
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp 
 )
 # [[[end]]]

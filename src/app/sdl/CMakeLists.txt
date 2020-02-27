@@ -1,6 +1,3 @@
-set(APP_SDL_HEADERS "")
-set(APP_SDL_SOURCE "")
-
 # cmake-format: off
 # [[[cog
 #    import os, cog, glob
@@ -9,7 +6,7 @@ set(APP_SDL_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND APP_SDL_HEADERS ")
+#       cog.outl("set(APP_SDL_HEADERS ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
@@ -26,14 +23,14 @@ set(APP_SDL_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND APP_SDL_SOURCE ")
+#       cog.outl("set(APP_SDL_SOURCE ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
 #       cog.outl(")")
 # ]]]
 ## GENERATED CODE WITH cogapp
-list(APPEND APP_SDL_SOURCE 
+set(APP_SDL_SOURCE 
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp 
 )
 # [[[end]]]

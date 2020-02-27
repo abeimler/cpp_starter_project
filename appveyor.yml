@@ -4,17 +4,12 @@ clone_folder: c:\projects\source
 build_script:
 - cmd: >-
     mkdir build
-
     cd build
-
     curl -s https://report.ci/annotate.py > annotate.py
                     
-    pip install --user conan
-
+    pip install --user conan cogapp cmake
     set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
-
     cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release
-
     cmake --build . --config "Release" | python annotate.py --tee --name "MSVC Log" --tool msvc
 test_script:
 - cmd: ctest -C Release
@@ -26,4 +21,3 @@ on_failure:
 on_finish:
   # Framework with autodetection
   - curl -s https://report.ci/upload.py | python
-

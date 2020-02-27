@@ -1,6 +1,3 @@
-set(${CMAKE_PROJECT_NAME}_BENCHMARK_HEADERS "")
-set(${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE "")
-
 # cmake-format: off
 # [[[cog
 #    import os, cog, glob
@@ -9,7 +6,7 @@ set(${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND ${CMAKE_PROJECT_NAME}_BENCHMARK_HEADERS ")
+#       cog.outl("set(${CMAKE_PROJECT_NAME}_BENCHMARK_HEADERS ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
@@ -26,7 +23,7 @@ set(${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND ${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE ")
+#       cog.outl("set(${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           if "benchpress_main.cpp" in os.path.relpath(src, path): continue
@@ -34,7 +31,7 @@ set(${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE "")
 #       cog.outl(")")
 # ]]]
 ## GENERATED CODE WITH cogapp
-list(APPEND ${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE 
+set(${CMAKE_PROJECT_NAME}_BENCHMARK_SOURCE 
     ${CMAKE_CURRENT_SOURCE_DIR}/example.cpp 
 )
 # [[[end]]]
