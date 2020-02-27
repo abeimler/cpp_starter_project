@@ -12,6 +12,8 @@ include(${CMAKE_BINARY_DIR}/conan.cmake)
 
 conan_add_remote(NAME bincrafters URL
                  https://api.bintray.com/conan/bincrafters/public-conan)
+conan_add_remote(NAME neargye URL
+                 https://api.bintray.com/conan/neargye/conan-packages) # remote for magic_enum
 
 conan_cmake_run(
   REQUIRES
@@ -20,6 +22,8 @@ conan_cmake_run(
   docopt.cpp/0.6.2
   fmt/6.0.0
   spdlog/1.5.0
+  ms-gsl/2.0.0 # nice to have, not used (yet)
+  magic_enum/0.6.5@neargye/stable # nice to have
   OPTIONS
   ${CONAN_EXTRA_OPTIONS}
   BASIC_SETUP

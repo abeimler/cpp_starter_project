@@ -10,7 +10,7 @@ function(enable_sanitizers project_name)
     endif()
 
     set(SANITIZERS "")
-
+    
     option(ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" FALSE)
     if(ENABLE_SANITIZER_ADDRESS)
       list(APPEND SANITIZERS "address")
