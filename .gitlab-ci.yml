@@ -7,7 +7,7 @@ stages:
 before_script:
   - apt-get -qq update && apt-get -qq install -y software-properties-common
   - add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - apt-get -qq update && apt-get -qq install -y git gcc-9 g++-9 lcov cmake make python python-pip doxygen
+  - apt-get -qq update && apt-get -qq install -y git g++-9 lcov cmake make python python-pip doxygen
   - pip install --upgrade pip && pip install --user cogapp conan cmake
   - g++-9 --version
 
