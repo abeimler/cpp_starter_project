@@ -8,12 +8,8 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - git
-      - gcov
       - gcc-9
       - g++-9
-      - cmake
-      - make
       - python
       - python-pip
       - doxygen
