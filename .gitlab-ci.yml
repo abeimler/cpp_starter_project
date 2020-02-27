@@ -5,6 +5,7 @@ stages:
   - test
 
 before_script:
+  - apt-get -qq update && apt-get -qq install -y software-properties-common
   - add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - apt-get -qq update && apt-get -qq install -y python gcc g++ cmake make doxygen git
   - pip install --user cogapp conan cmake
