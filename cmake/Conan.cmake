@@ -22,10 +22,8 @@ conan_cmake_run(
   docopt.cpp/0.6.2
   fmt/6.0.0
   spdlog/1.5.0
-  ## if you don't use it, remove it
-  ms-gsl/2.0.0 # nice to have, not used (yet)
-  date/2.4.1   # nice to have, not used (yet)
-  magic_enum/0.6.5@neargye/stable # nice to have
+  ms-gsl/2.0.0
+  magic_enum/0.6.5@neargye/stable
   OPTIONS
   ${CONAN_EXTRA_OPTIONS}
   BASIC_SETUP

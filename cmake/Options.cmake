@@ -3,7 +3,7 @@
 ##
 
 ## build options
-option(BUILD_TESTS "Enable Tests" OFF)
+option(BUILD_TESTS "Enable Tests" ON)
 option(BUILD_INTEGRATION_TESTS "Enable Integration Tests" OFF)
 option(BUILD_FUZZING "Enable Fuzz Tests" OFF)
 option(BUILD_BENCHMARKS "Enable Benchmark" OFF)

@@ -1,6 +1,3 @@
-set(PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_HEADERS "")
-set(PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_SOURCE "")
-
 # cmake-format: off
 # [[[cog
 #    import os, cog, glob
@@ -9,7 +6,7 @@ set(PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_HEADERS ")
+#       cog.outl("set(PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_HEADERS ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
@@ -26,7 +23,7 @@ set(PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_SOURCE ")
+#       cog.outl("set(PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_SOURCE ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
@@ -51,8 +48,6 @@ target_sources(${CMAKE_PROJECT_NAME}_bitsery INTERFACE ${PERSISTENCE_BINARY${CMA
                                                        ${PERSISTENCE_BINARY${CMAKE_PROJECT_NAME}_HEADERS})
 
 target_include_directories(${CMAKE_PROJECT_NAME}_bitsery INTERFACE ${PROJECT_SOURCE_DIR}/src/persistence)
-target_include_directories(${CMAKE_PROJECT_NAME}_bitsery INTERFACE ${PROJECT_SOURCE_DIR}/include)
-target_include_directories(${CMAKE_PROJECT_NAME}_bitsery INTERFACE ${PROJECT_BINARY_DIR}/include)
 
 # todo: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME}_bitsery INTERFACE Bitsery::bitsery)

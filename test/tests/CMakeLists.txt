@@ -35,6 +35,7 @@ set(${CMAKE_PROJECT_NAME}_TEST_SOURCE "")
 # ]]]
 ## GENERATED CODE WITH cogapp
 list(APPEND ${CMAKE_PROJECT_NAME}_TEST_SOURCE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_bar.cpp 
     ${CMAKE_CURRENT_SOURCE_DIR}/tests.cpp 
 )
 # [[[end]]]

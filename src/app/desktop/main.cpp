@@ -20,7 +20,7 @@
 ********************************************************************************************/
 
 #include "raylib.h"
-#include "engine/Game.h"
+#include "Game.h"
 
 int main(void)
 {

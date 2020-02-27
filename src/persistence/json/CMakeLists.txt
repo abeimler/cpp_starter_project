@@ -1,6 +1,3 @@
-set(PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_HEADERS "")
-set(PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_SOURCE "")
-
 # cmake-format: off
 # [[[cog
 #    import os, cog, glob
@@ -9,19 +6,19 @@ set(PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_SOURCE "")
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_HEADERS ")
+#       cog.outl("set(PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_HEADERS ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
 #       cog.outl(")")
 # ]]]
 ## GENERATED CODE WITH cogapp
-list(APPEND PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_HEADERS 
-    ${CMAKE_CURRENT_SOURCE_DIR}/units.h 
+set(PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_HEADERS 
     ${CMAKE_CURRENT_SOURCE_DIR}/magic_enum.h 
-    ${CMAKE_CURRENT_SOURCE_DIR}/etl/array.h 
-    ${CMAKE_CURRENT_SOURCE_DIR}/etl/cstring.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/units.h 
     ${CMAKE_CURRENT_SOURCE_DIR}/etl/vector.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/etl/cstring.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/etl/array.h 
 )
 # [[[end]]]
 # cmake-format: on
@@ -34,7 +31,7 @@ list(APPEND PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_HEADERS
 #    files = glob.glob(filepattern, recursive=True)
 #    if files:
 #       cog.outl("## GENERATED CODE WITH cogapp")
-#       cog.outl("list(APPEND PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_SOURCE ")
+#       cog.outl("set(PERSISTENCE_JSON${CMAKE_PROJECT_NAME}_SOURCE ")    ###< you need to CHANGE this line (string) with your sourcecode-list cmake variable name
 #       for src in files:
 #           if "skeleton" in src: continue
 #           cog.outl("    ${CMAKE_CURRENT_SOURCE_DIR}/%s " % os.path.relpath(src, path))
@@ -59,8 +56,6 @@ target_sources(${CMAKE_PROJECT_NAME}_json INTERFACE ${PERSISTENCE_JSON${CMAKE_PR
 add_library(${CMAKE_PROJECT_NAME}::json ALIAS ${CMAKE_PROJECT_NAME}_json)
 
 target_include_directories(${CMAKE_PROJECT_NAME}_json INTERFACE ${PROJECT_SOURCE_DIR}/src/persistence)
-target_include_directories(${CMAKE_PROJECT_NAME}_json INTERFACE ${PROJECT_SOURCE_DIR}/include)
-target_include_directories(${CMAKE_PROJECT_NAME}_json INTERFACE ${PROJECT_BINARY_DIR}/include)
 
 # todo: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME}_json INTERFACE nlohmann_json::nlohmann_json)

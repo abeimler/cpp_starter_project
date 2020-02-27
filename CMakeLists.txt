@@ -46,6 +46,11 @@ include(cmake/Options.cmake)
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
 
+# nice to have
+#list(APPEND CONAN_EXTRA_REQUIRES
+#date/2.4.1
+#)
+
 include(cmake/Conan.cmake)
 run_conan()
 
