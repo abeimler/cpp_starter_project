@@ -1,25 +1,55 @@
-dist: bionic
-sudo: false
 language: cpp
-compiler: gcc
+dist: xenial
+notifications:
+  email: false
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-9
-      - doxygen
+# Define builds on mulitple OS/compiler combinations. 
+# Feel free to add/remove entries from this list.
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - lcov
+            - g++-7
+            - python
+            - python-pip
+      env:
+        - MATRIX_EVAL="CXX_COMPILER=g++-7; sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-7 90"
 
-install:
-  - pip install --upgrade pip
+    - os: osx
+      osx_image: xcode10.1
+      addons:
+        homebrew:
+          packages:
+          - lcov
+          - python
+          - python-pip
+      env:
+        - MATRIX_EVAL="CXX_COMPILER=clang++"
+    
+
+before_install:
   - pip install --user cogapp conan cmake
+  - eval "${MATRIX_EVAL}"
+  - PARENTDIR=$(pwd)
+  - mkdir $PARENTDIR/build
 
+install: 
+  - cd $PARENTDIR/build
+  - cmake $PARENTDIR -DCMAKE_BUILD_TYPE=Coverage -DCMAKE_CXX_COMPILER=$CXX_COMPILER
+  - make
 
 script:
-  - g++ --version
-  - mkdir build && cd build
-  - CXX=/usr/bin/g++-9 CC=/usr/bin/gcc-9 cmake . -Bbuild -DENABLE_COVERAGE:BOOL=1 ..
-  - cmake --build build -- -j 2
-  - ctest -j2
-  - bash <(curl -s https://codecov.io/bash) -x /usr/bin/gcov-9
+  - make coverage
+
+after_success:
+  - cd $PARENTDIR/build
+  - lcov --list coverage_out.info.cleaned  # Show test report in travis log.
+  # Install coverals gem for uploading coverage to coveralls.
+  - gem install coveralls-lcov
+  - coveralls-lcov coverage_out.info.cleaned  # uploads to coveralls
+  - bash <(curl -s https://codecov.io/bash) -f coverage_out.info.cleaned || echo "Codecov did not collect coverage reports"
