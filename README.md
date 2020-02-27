@@ -15,8 +15,8 @@ _change your travis and Co. links here_
 .
 ├── benchmark                       benchmarks and benchmark-main
 │   └── benchmarks                  Sourcecode for benchmarks
-├── cmake
-├── fuzz_test
+├── cmake                           custom cmake files
+├── fuzz_test                       fuzz tests
 ├── include                         public include-files, configs, ...
 ├── src                             sourcecode
 │   ├── app                         application code
@@ -36,13 +36,17 @@ _change your travis and Co. links here_
 └── thirdparty                      custom changed libraries, libraries without dependencies managment, ...
 ```
 
+
+
 ## Build
 
 ### Requirements
 
  - [python](https://www.python.org/downloads/) and [python-pip](https://pip.pypa.io/en/stable/installing/)
  - C/C++ Compiler with C++ 17 support
- - cmake
+ - cmake (3.15+)
+ - conan
+   - `pip install --user conan`
  - cogapp   
    - `pip install --user cogapp`
 
@@ -70,7 +74,7 @@ cmake --build build -- -j 8
 
 run `./tests.sh` or 
 ```
-cd test && ctest -j4
+cd build/test && ctest -j4
 ```
 
 

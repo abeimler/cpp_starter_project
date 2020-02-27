@@ -55,6 +55,8 @@ target_link_libraries(${CMAKE_PROJECT_NAME}engine PRIVATE project_warnings proje
 target_sources(${CMAKE_PROJECT_NAME}engine PRIVATE ${APP_ENGINE_${CMAKE_PROJECT_NAME}_SOURCE}
                                                    ${APP_ENGINE_${CMAKE_PROJECT_NAME}_HEADERS})
 
+target_include_directories(${CMAKE_PROJECT_NAME}engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
 # TODO: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME}engine PUBLIC ${CMAKE_PROJECT_NAME}::core)
 

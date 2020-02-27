@@ -54,9 +54,7 @@ add_library(${CMAKE_PROJECT_NAME}::core ALIAS ${CMAKE_PROJECT_NAME})
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE project_warnings project_options)
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${${CMAKE_PROJECT_NAME}_SOURCE} ${${CMAKE_PROJECT_NAME}_HEADERS})
 
-target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${PROJECT_BINARY_DIR}/include)
+target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # @TODO: add libs
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC CONAN_PKG::magic_enum)

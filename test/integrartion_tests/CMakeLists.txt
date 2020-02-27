@@ -32,6 +32,7 @@
 # ]]]
 ## GENERATED CODE WITH cogapp
 set(${CMAKE_PROJECT_NAME}_INTEGRATION_TEST_SOURCE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_game.cpp 
     ${CMAKE_CURRENT_SOURCE_DIR}/tests.cpp 
 )
 # [[[end]]]
