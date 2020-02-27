@@ -67,7 +67,7 @@ cmake --build build -- -j 8
 
 run `./tests.sh` or 
 ```
-cd test && ctest -j4
+cd build/test && ctest -j4
 ```
 
 
